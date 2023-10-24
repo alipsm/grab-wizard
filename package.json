@@ -1,0 +1,24 @@
+{
+  "name": "nested-data-navigator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node dist/index",
+    "build":"tsc && node dist/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alipsm/nested-data-navigator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alipsm/nested-data-navigator/issues"
+  },
+  "homepage": "https://github.com/alipsm/nested-data-navigator#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
