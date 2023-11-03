@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node dist/index",
-    "build":"tsc && node dist/index",
+    "start": "node dist/index",
+    "build": "tsc && node dist/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/alipsm/nested-data-navigator#readme",
   "devDependencies": {
+    "@types/node": "^20.8.8",
     "typescript": "^5.2.2"
   }
 }
