@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index",
     "build": "tsc && node dist/index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/alipsm/nested-data-navigator#readme",
   "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "@jest/globals": "^29.7.0",
     "@types/node": "^20.8.8",
+    "babel-jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   }
 }
