@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index",
     "build": "tsc && node dist/index",
-    "test": "jest"
+    "test": "tsc && jest"
   },
   "repository": {
     "type": "git",
