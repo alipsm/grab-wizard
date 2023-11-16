@@ -1,5 +1,3 @@
-import { createUniqeKey, isExistUniqeKey } from "./scripts/keyOperations";
+import { findValueByNavigateKey } from "./scripts/searchModule/search";
 
-const data= createUniqeKey({name:"ali",family:"ahmad"},"data.name.value")
-const isExist= isExistUniqeKey("firstName")
-console.log('isExist', isExist)
+module.exports=findValueByNavigateKey

@@ -1,0 +1,51 @@
+{
+    "organization": {
+      "name": "Acme Corp",
+      "departments": [
+        {
+          "name": "Sales",
+          "manager": "Alice",
+          "employees": [
+            {
+              "name": "Bob",
+              "title": "Sales Representative",
+              "contact": {
+                "email": "bob@example.com",
+                "phone": "555-111-1234"
+              }
+            },
+            {
+              "name": "Charlie",
+              "title": "Sales Manager",
+              "contact": {
+                "email": "charlie@example.com",
+                "phone": "555-222-5678"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Engineering",
+          "manager": "Dave",
+          "employees": [
+            {
+              "name": "Eve",
+              "title": "Software Engineer",
+              "contact": {
+                "email": "eve@example.com",
+                "phone": "555-333-9876"
+              }
+            },
+            {
+              "name": "Frank",
+              "title": "Hardware Engineer",
+              "contact": {
+                "email": "frank@example.com",
+                "phone": "555-444-6543"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }

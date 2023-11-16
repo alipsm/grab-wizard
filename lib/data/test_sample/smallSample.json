@@ -1,0 +1,11 @@
+{
+    "organization": {
+      "name": "Acme Corp",
+      "departments": [
+        {
+          "name": "Sales",
+          "manager": "Alice"
+        }
+      ]
+    }
+  }
