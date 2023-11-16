@@ -5,6 +5,7 @@
     "outDir": "./dist",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "declaration": true
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
