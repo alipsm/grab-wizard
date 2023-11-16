@@ -2,8 +2,23 @@
   "name": "nested-data-navigator",
   "version": "1.0.2",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "types": {
+        "require": "./index.d.cts",
+        "default": "./index.d.ts"
+      },
+      "browser": {
+        "require": "./dist/browser/axios.cjs",
+        "default": "./index.js"
+      },
+      "default": {
+        "require": "./dist/node/axios.cjs",
+        "default": "./index.js"
+      }
+    }
+  },
   "scripts": {
     "start": "node dist/index",
     "build": "tsc && node dist/index",
