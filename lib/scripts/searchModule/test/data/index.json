@@ -3,11 +3,8 @@
       "servlet": [
         {
           "servlet-name": "cofaxEmail",
-          "servlet-class": "org.cofax.cds.EmailServlet",
-          "init-param": {
-            "mailHost": "mail1",
-            "mailHostOverride": "mail2"
-          }
+          "servlet-class": "org.cofax.cds.EmailServlet"
+          
         },
         {
           "servlet-name": "cofaxAdmin",
@@ -15,7 +12,11 @@
         },
         {
           "servlet-name": "fileServlet",
-          "servlet-class": "org.cofax.cds.FileServlet"
+          "servlet-class": "org.cofax.cds.FileServlet",
+          "init-param": {
+            "mailHost": "mail1",
+            "mailHostOverride": "mail2"
+          }
         },
         {
           "servlet-name": "cofaxTools",

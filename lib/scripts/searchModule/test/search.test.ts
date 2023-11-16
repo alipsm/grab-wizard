@@ -1,7 +1,6 @@
-import { describe, test, expect, beforeEach, beforeAll } from "@jest/globals";
+import { describe, test, expect, beforeAll } from "@jest/globals";
 import { findValueByNavigateKey } from "../search";
 import FakeApiData from "./data/index.json"
-import FakeApiData2 from "../../../data/fakeJson.json"
 
 
 describe('search module', () => {
@@ -44,7 +43,7 @@ describe('search module', () => {
         })).toBe(true);
     });
 
-    test('get navigate path in array', () => {
+    test('get navigate path in object', () => {
         expect(findValueByNavigateKey({
             obj: FakeApiData, routes: ["taglib", "value"], options: {
                 getPath: true
@@ -53,9 +52,18 @@ describe('search module', () => {
     });
 
 
+    test('get navigate path in array', () => {
+        expect(findValueByNavigateKey({
+            obj: FakeApiData, routes: ["init-param", "mailHostOverride"], options: {
+                getPath: true
+            }
+        })).toEqual(["web-app", "servlet", "2", "init-param", "mailHostOverride"]);
+    });
+
+
 
     // Test modes of incorrect routes
-    test('select side key', () => {
+    test('select side key (wrong test)', () => {
         expect(findValueByNavigateKey({
             obj: FakeApiData, routes: ["servlet-mapping","taglib"], options: {
                 getPath: true
@@ -63,9 +71,17 @@ describe('search module', () => {
         })).toBe(undefined);
     });
 
-    test('apply nested wrong navigate path in array', () => {
+    test('apply nested wrong navigate path in array (wrong test)', () => {
         expect(findValueByNavigateKey({
             obj: FakeApiData, routes: ["servlet-mapping","nested1"], options: {
+                getPath: true
+            }
+        })).toBe(undefined);
+    });
+
+    test('get navigate path in array (wrong test)', () => {
+        expect(findValueByNavigateKey({
+            obj: FakeApiData, routes: ["init-param", "wrong"], options: {
                 getPath: true
             }
         })).toBe(undefined);
