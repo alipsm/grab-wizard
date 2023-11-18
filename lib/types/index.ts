@@ -1,8 +1,11 @@
 export interface NavigatorInterface {
     obj: object,
-    routes: (string | number)[],
+    routes: routes[],
     options?: {
-        getPath?: boolean | undefined,
+        getPath?: getPath,
     }
 }
+
+type routes = (string | number)
+type getPath = boolean | undefined
 
