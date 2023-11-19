@@ -1,4 +1,5 @@
 import { NavigatorInterface } from "../../types"
+import { mapRoutesToStringPath } from "../pathConverter"
 
 
 const isFinalItem = (obj: object, indexFound: number, key: string) => {
@@ -18,10 +19,8 @@ const areSameKeys = (routes: (string | number)[], indexFound: number, key: strin
 }
 
 
-
-
 // Callback function for find nested value
-function findValueByNavigateKey(navData: NavigatorInterface) {
+function navigateAndRetrieve(navData: NavigatorInterface): { grabValue: unknown, grabPath: NavigatorInterface["routes"] } {
 
     const { obj, routes, options } = navData;
 
@@ -29,21 +28,22 @@ function findValueByNavigateKey(navData: NavigatorInterface) {
     var routesMonitoring = [] // => Monitores object routes 
 
     // handle callback search function (find nested value & path)
-    function search(obj: object, routes: (string | number)[], options: object) {
+    function search(obj: object, routes: (string | number)[], options: object): { path: NavigatorInterface["routes"], value: unknown } {
         for (const key in obj) {
+            const nextObj = obj[key];
+
             if (areSameKeys(routes, indexFound, key)) {
                 routesMonitoring.push(key)
                 indexFound++
                 if (isLastRoutesKey(routes, indexFound))
-                    return view(obj[key])
-                const nextObj = obj[key];
+                    return { path: routesMonitoring, value: nextObj }
                 const result = search(nextObj, routes, options);
                 return result ?? undefined
             } else if (isFinalItem(obj, indexFound, key)) {
                 return undefined
             } else if (isObject(obj, key)) {
                 routesMonitoring.push(key)
-                const result = search(obj[key], routes, options);
+                const result = search(nextObj, routes, options);
                 if (result)
                     return result;
             }
@@ -52,14 +52,23 @@ function findValueByNavigateKey(navData: NavigatorInterface) {
         return undefined;
     }
 
-    // Manage output data settings
-    function view(data: unknown) {
-        if (navData.options?.getPath) {
-            return routesMonitoring
-        }
-        return data
+    const result= search(obj, routes, options)
+
+    return {
+        grabValue: result?.value ?? navData.defaultValue,
+        grabPath: result?.path
     }
-    return search(obj, routes, options)
 }
 
-export { findValueByNavigateKey }
+const grabValue = (navData: NavigatorInterface): unknown => {
+    const { grabValue } = navigateAndRetrieve(navData)
+    return grabValue
+}
+
+const grabPath = (navData: NavigatorInterface): unknown => {
+    const { grabPath } = navigateAndRetrieve(navData)
+    let getObjStringSyntax = mapRoutesToStringPath(grabPath)
+    return getObjStringSyntax
+}
+
+export { grabValue,grabPath }
