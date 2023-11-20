@@ -1,8 +1,9 @@
 export interface NavigatorInterface {
     obj: object,
     routes: routes[],
+    defaultValue?:string
     options?: {
-        getPath?: getPath,
+       
     }
 }
 
