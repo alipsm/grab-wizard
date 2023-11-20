@@ -1,12 +1,17 @@
-export interface NavigatorInterface {
+interface NavigatorInterface {
     obj: object,
     routes: routes[],
     defaultValue?:string
-    options?: {
-       
-    }
 }
 
+interface NavigateAndRetrieveInterface{ grabValue: unknown, grabPath: NavigatorInterface["routes"] }
+interface SearchResultInterface{ path: NavigatorInterface["routes"], value: unknown | undefined }
+
 type routes = (string | number)
-type getPath = boolean | undefined
+
+export {
+    NavigateAndRetrieveInterface,
+    SearchResultInterface,
+    NavigatorInterface
+}
 
