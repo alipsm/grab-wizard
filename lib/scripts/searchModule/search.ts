@@ -1,22 +1,6 @@
 import { NavigatorInterface } from "../../types"
 import { mapRoutesToStringPath } from "../pathConverter"
-
-
-const isFinalItem = (obj: object, indexFound: number, key: string) => {
-    return Object.keys(obj).at(-1) === key && indexFound !== 0 && typeof obj[key] !== 'object'
-}
-
-const isObject = (obj: object, key: string) => {
-    return typeof obj[key] === 'object'
-}
-
-const isLastRoutesKey = (routes: (string | number)[], indexFound: number) => {
-    return indexFound === routes.length
-}
-
-const areSameKeys = (routes: (string | number)[], indexFound: number, key: string) => {
-    return key === routes[indexFound]
-}
+const {areSameKeys,isFinalItem,isLastRoutesKey,isObject} = require("./helpers")
 
 
 // Callback function for find nested value
