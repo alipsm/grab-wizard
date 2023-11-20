@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeAll } from "@jest/globals";
 import FakeApiData from "./sample/index.json"
-import { grabPath, grabValue } from "../scripts/searchModule/search";
+const { grabPath, grabValue } = require("../scripts/searchModule/search")
 
 
 describe('search module', () => {

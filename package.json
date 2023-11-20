@@ -2,8 +2,8 @@
   "name": "nested-data-navigator",
   "version": "1.0.4",
   "description": "",
-  "main": "index.js",
-  "exports": "./index.js",
+  "main": "index.ts",
+  "exports": "./index.ts",
   "scripts": {
     "start": "node dist/index",
     "build": "tsc && node dist/index",

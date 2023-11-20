@@ -55,4 +55,6 @@ const grabPath = (navData: NavigatorInterface): unknown => {
     return getObjStringSyntax
 }
 
-export { grabValue,grabPath }
+module.exports={
+    grabValue,grabPath
+}
