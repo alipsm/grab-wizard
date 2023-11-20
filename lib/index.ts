@@ -1,3 +1,6 @@
-import { findValueByNavigateKey } from "./scripts/searchModule/search";
+import { grabValue,grabPath } from "./scripts/searchModule/search"
 
- export {findValueByNavigateKey}
+export={
+    grabValue,
+    grabPath
+}
