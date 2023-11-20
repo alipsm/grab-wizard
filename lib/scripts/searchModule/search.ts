@@ -1,7 +1,8 @@
 import { NavigateAndRetrieveInterface, NavigatorInterface, SearchResultInterface } from "../../types"
 import { mapRoutesToStringPath } from "../pathConverter"
+import navigateAndRetrieveHelpers from "./helpers";
 
-const {areSameKeys,isFinalItem,isLastRoutesKey,isObject} = require("./helpers")
+const {areSameKeys,isFinalItem,isLastRoutesKey,isObject} = navigateAndRetrieveHelpers
 
 // Callback function for find nested value
 function navigateAndRetrieve(navData: NavigatorInterface):NavigateAndRetrieveInterface {
@@ -56,6 +57,5 @@ const grabPath = (obj: object,routes: NavigatorInterface["routes"],defaultValue?
 }
 
 export {
-
     grabValue,grabPath
 }
