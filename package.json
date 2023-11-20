@@ -3,22 +3,7 @@
   "version": "1.0.3",
   "description": "",
   "main": "index.js",
-  "exports": {
-    ".": {
-      "types": {
-        "require": "./index.d.cts",
-        "default": "./index.d.ts"
-      },
-      "browser": {
-        "require": "./dist/browser/axios.cjs",
-        "default": "./index.js"
-      },
-      "default": {
-        "require": "./dist/node/axios.cjs",
-        "default": "./index.js"
-      }
-    }
-  },
+  "exports": "./index.js",
   "scripts": {
     "start": "node dist/index",
     "build": "tsc && node dist/index",
