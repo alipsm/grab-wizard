@@ -12,60 +12,47 @@ describe('search module', () => {
     });
 
     test('find nested value for object', () => {
-        expect(grabValue({
-            obj: fakeData, routes: ["taglib", "nested2"]
-        })).toMatchObject({ value: 'hi' });
+        expect(grabValue(fakeData, ["taglib", "nested2"])).toMatchObject({ value: 'hi' });
     });
 
     test('find one before the last item value in array', () => {
-        expect(grabValue({
-            obj: fakeData, routes: ["last-array-item", "adminGroupID"]
-        })).toBe(4);
+        expect(grabValue(fakeData, ["last-array-item", "adminGroupID"])).toBe(4);
     });
 
     test('find last item value in array', () => {
-        expect(grabValue({
-            obj: FakeApiData, routes: ["last-array-item", "betaServer"]
-        })).toBe(true);
+        expect(grabValue(FakeApiData, ["last-array-item", "betaServer"])).toBe(true);
     });
 
     test('find last item value in array', () => {
-        expect(grabValue({
-            obj: FakeApiData, routes: ["last-array-item", "betaServer"]
-        })).toBe(true);
+        expect(grabValue(FakeApiData, ["last-array-item", "betaServer"])).toBe(true);
     });
 
     test('get navigate path in object', () => {
-        expect(grabPath({
-            obj: FakeApiData, routes: ["taglib", "value"]
-        })).toBe(".web-app.taglib.nested1.nested2.value");
+        expect(grabPath(FakeApiData, ["taglib", "value"]
+        )).toBe(".web-app.taglib.nested1.nested2.value");
     });
 
 
     test('get navigate path in array', () => {
-        expect(grabPath({
-            obj: FakeApiData, routes: ["init-param", "mailHostOverride"]
-        })).toEqual(".web-app.servlet[2].init-param.mailHostOverride");
+        expect(grabPath(FakeApiData, ["init-param", "mailHostOverride"]
+        )).toBe(".web-app.servlet[2].init-param.mailHostOverride");
     });
 
 
 
     // Test modes of incorrect routes
     test('select side key (wrong test)', () => {
-        expect(grabPath({
-            obj: FakeApiData, routes: ["servlet-mapping", "taglib"]
-        })).toBe(undefined);
+        expect(grabPath(FakeApiData, ["servlet-mapping", "taglib"]
+        )).toBe("");
     });
 
     test('apply nested wrong navigate path in array (wrong test)', () => {
-        expect(grabPath({
-            obj: FakeApiData, routes: ["servlet-mapping", "nested1"]
-        })).toBe(undefined);
+        expect(grabPath(FakeApiData, ["servlet-mapping", "nested1"]
+        )).toBe("");
     });
 
     test('get navigate path in array (wrong test)', () => {
-        expect(grabPath({
-            obj: FakeApiData, routes: ["init-param", "wrong"]
-        })).toBe(undefined);
+        expect(grabPath(FakeApiData, ["init-param", "wrong"]
+        )).toBe("");
     });
 });
