@@ -41,7 +41,7 @@ function navigateAndRetrieve(navData: NavigatorInterface):NavigateAndRetrieveInt
 
     return {
         grabValue: result?.value ?? navData.defaultValue,
-        grabPath: result?.path ?? ["Path not found :("]
+        grabPath: result?.path ?? []
     }
 }
 

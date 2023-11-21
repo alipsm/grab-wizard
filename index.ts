@@ -1,4 +1,4 @@
-const { grabPath, grabValue } = require("./lib/scripts/searchModule/search")
+import { grabPath,grabValue } from "./lib/scripts/searchModule/search"
 
 export {
     grabValue,
