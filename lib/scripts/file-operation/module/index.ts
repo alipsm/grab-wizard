@@ -1,42 +1,65 @@
+import { mapRoutesToStringPath } from '../../pathConverter';
 import { PATHS_JSON_FILE } from './../../../constant/index';
+import fileOperationHelpers from '../helpers';
+
 const fs = require('fs');
+
 const fileOperations = (() => {
-    // Creating a unique key using the object keys and the route received from the user
-    function createUniqueKey(obj:object, path:string) {
-        const getObjectKeys = Reflect.ownKeys(obj);
-        const dataString = `objectKeys=${getObjectKeys.join(".")}&userPath=${path}`;
-        return dataString;
-    }
     // Writes Unique key in the json file
-    function setUniqueKey(key:string, path:string) {
-        fs.existsSync(PATHS_JSON_FILE) ?
-            updatePathsJsonFile(key, path) :
-            createPathsJsonFile(key, path);
+    function setUniqueKey(obj: object, path: string) {
+        !fs.existsSync(PATHS_JSON_FILE) && createPathsJsonFile()
+        const getUniqueKey = fileOperationHelpers.createUniqueKey(obj, path)
+        const hasheUniqueKey = fileOperationHelpers.stringHasher(getUniqueKey)
+        updatePathsJsonFile(hasheUniqueKey, path)
     }
-    // Creates JSON file to store key-value for paths
-    function createPathsJsonFile(key:string, path:string) {
-        fs.writeFileSync(PATHS_JSON_FILE, JSON.stringify({ [key]: path }), (error) => {
+
+    // Create Json file
+    function createPathsJsonFile() {
+        fs.writeFileSync(PATHS_JSON_FILE, JSON.stringify({}), (error) => {
             console.log('error', error);
         });
     }
+
+
+
     // Updates JSON file to store key-value for paths
-    function updatePathsJsonFile(key:string, path:string) {
-        try {
+    function updatePathsJsonFile(key: number, path: string) {
+        const fileContent = fs.readFileSync(PATHS_JSON_FILE, 'utf8');
+        const data = JSON.parse(fileContent);
+        data[key] = path;
+        const updatedData = JSON.stringify(data, null, 2);
+        fs.writeFileSync(PATHS_JSON_FILE, updatedData, 'utf8');
+    }
+
+
+    function getLocalEnvironmentData() {
+        if (fileOperationHelpers.isExistWindow() === "node") {
+            if (!fs.existsSync(PATHS_JSON_FILE)) {
+                createPathsJsonFile()
+                return {}
+            }
             const fileContent = fs.readFileSync(PATHS_JSON_FILE, 'utf8');
-            const data = JSON.parse(fileContent);
-            data[key] = path;
-            const updatedData = JSON.stringify(data, null, 2);
-            fs.writeFileSync(PATHS_JSON_FILE, updatedData, 'utf8');
-        }
-        catch (error) {
-            // Tries to create JSON file
-            createPathsJsonFile(key, path);
+            return JSON.parse(fileContent) || {}
+        } else {
+
         }
     }
+
+
+    // Updates JSON file to store key-value for paths
+    function getPathOnTheFile(obj: object, path: (string | number)[]): string | undefined {
+        const stringPath = mapRoutesToStringPath(path)
+        const getUniqueKey = fileOperationHelpers.createUniqueKey(obj, stringPath)
+        const getHash = fileOperationHelpers.stringHasher(getUniqueKey)
+        let data: object = getLocalEnvironmentData()
+        if (!!data && typeof data === "object")
+            return data[getHash];
+        return undefined
+    }
+
+
     return {
-        createPathsJsonFile,
-        updatePathsJsonFile,
-        createUniqueKey,
+        getPathOnTheFile,
         setUniqueKey,
     };
 })();
