@@ -1,14 +1,14 @@
 const navigateAndRetrieveHelpers = (() => {
-    const isFinalItem = (obj, indexFound, key) => {
+    const isFinalItem = (obj: object, indexFound: number, key: string) => {
         return Object.keys(obj).at(-1) === key && indexFound !== 0 && typeof obj[key] !== 'object';
     };
-    const isObject = (obj, key) => {
+    const isObject = (obj: object, key: string) => {
         return typeof obj[key] === 'object';
     };
-    const isLastRoutesKey = (routes, indexFound) => {
+    const isLastRoutesKey = (routes: (string | number)[], indexFound: number) => {
         return indexFound === routes.length;
     };
-    const areSameKeys = (routes, indexFound, key) => {
+    const areSameKeys = (routes: (string | number)[], indexFound: number, key: string) => {
         return key === routes[indexFound];
     };
     return {
