@@ -3,7 +3,7 @@ import pathOperation from "../path-operation/module";
 import retrieveNavigator from "../search-operation/module";
 
 const DiContainer = (() => {
-    const handleGrabValue = (obj: object, path: string, defaultValue?: string):any|undefined => {
+    const handleGrabValue = (obj: object, path: string, defaultValue?: string): any | undefined => {
         const getPathValue = fileOperations.getPathOnTheFile(obj, path)
         if (!!getPathValue) {
             const getObjValue = pathOperation.getObjectValueWithStringPath(obj, getPathValue)
@@ -20,9 +20,13 @@ const DiContainer = (() => {
         return grabValue
     };
 
-    const handleGrabPath = (obj: object, path: string, defaultValue?: string):any|undefined => {
+    const handleGrabPath = (obj: object, path: string, defaultValue?: string): any | undefined => {
+        const getPathValue = fileOperations.getPathOnTheFile(obj, path)
+        if (!!getPathValue)
+            return getPathValue
+        return defaultValue
     };
-    
+
     return {
         grabValue: handleGrabValue,
         grabPath: handleGrabPath
