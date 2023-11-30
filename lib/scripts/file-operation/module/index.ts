@@ -1,16 +1,15 @@
-import { mapRoutesToStringPath } from '../../pathConverter';
-import { PATHS_JSON_FILE } from './../../../constant/index';
+import { PATHS_JSON_FILE } from '../../../constant';
 import fileOperationHelpers from '../helpers';
 
 const fs = require('fs');
 
 const fileOperations = (() => {
     // Writes Unique key in the json file
-    function setUniqueKey(obj: object, path: string) {
+    function setUniqueKey(obj: object,path:string, orgPath: string) {
         !fs.existsSync(PATHS_JSON_FILE) && createPathsJsonFile()
         const getUniqueKey = fileOperationHelpers.createUniqueKey(obj, path)
         const hasheUniqueKey = fileOperationHelpers.stringHasher(getUniqueKey)
-        updatePathsJsonFile(hasheUniqueKey, path)
+        updatePathsJsonFile(hasheUniqueKey, orgPath)
     }
 
     // Create Json file
@@ -47,9 +46,8 @@ const fileOperations = (() => {
 
 
     // Updates JSON file to store key-value for paths
-    function getPathOnTheFile(obj: object, path: (string | number)[]): string | undefined {
-        const stringPath = mapRoutesToStringPath(path)
-        const getUniqueKey = fileOperationHelpers.createUniqueKey(obj, stringPath)
+    function getPathOnTheFile(obj: object, path:string): string | undefined {
+        const getUniqueKey = fileOperationHelpers.createUniqueKey(obj, path)
         const getHash = fileOperationHelpers.stringHasher(getUniqueKey)
         let data: object = getLocalEnvironmentData()
         if (!!data && typeof data === "object")

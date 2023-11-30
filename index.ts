@@ -1,6 +1,8 @@
-import { grabPath,grabValue } from "./lib/scripts/searchModule/search"
+import DiContainer from "./lib/scripts/di/container";
+
+const {grabPath,grabValue} = DiContainer
 
 export {
-    grabValue,
-    grabPath
+  grabPath,
+  grabValue
 }
