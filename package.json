@@ -3,7 +3,6 @@
   "version": "1.0.11",
   "description": "",
   "main": "index.ts",
-  "type": "module",
   "exports": "./index.ts",
   "scripts": {
     "start": "node dist/index",
