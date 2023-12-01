@@ -1,12 +1,12 @@
 {
   "name": "nested-data-navigator",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
   "scripts": {
     "start": "node dist/index",
-    "publish": "rm ./lib/data/index.json && tsc && npm version patch && npm publish",
+    "publish": "rm -f ./lib/data && tsc && npm version patch && npm publish",
     "build": "tsc && node dist/index",
     "test": "tsc && jest"
   },
