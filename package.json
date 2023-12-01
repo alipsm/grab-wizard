@@ -6,6 +6,7 @@
   "exports": "./dist/index.js",
   "scripts": {
     "start": "node dist/index",
+    "publish": "rm ./lib/data/index.json && tsc && npm version patch && npm publish",
     "build": "tsc && node dist/index",
     "test": "tsc && jest"
   },
