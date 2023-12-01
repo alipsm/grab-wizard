@@ -1,8 +1,9 @@
 {
   "name": "nested-data-navigator",
-  "version": "1.0.10",
+  "version": "1.0.9",
   "description": "",
   "main": "index.ts",
+  "type": "module",
   "exports": "./index.ts",
   "scripts": {
     "start": "node dist/index",
