@@ -24,7 +24,14 @@ const DiContainer = (() => {
         const getPathValue = fileOperations.getPathOnTheFile(obj, path)
         if (!!getPathValue)
             return getPathValue
-        return defaultValue
+
+        const getArrayPath = pathOperation.convertPathToArray(path)
+        const grabPath = retrieveNavigator.grabPath(obj, getArrayPath)
+        if (!!!grabPath.length)
+            return defaultValue
+        const convertGrabPathToString = pathOperation.mapRoutesToStringPath(grabPath)
+        fileOperations.setUniqueKey(obj, path, convertGrabPathToString)
+        return convertGrabPathToString
     };
 
     return {
