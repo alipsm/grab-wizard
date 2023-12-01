@@ -32,14 +32,21 @@ describe('search module', () => {
         expect(grabPath(FakeApiData, "taglib.value"
         )).toBe(".web-app.taglib.nested1.nested2.value");
     });
-
-
+    
     test('get navigate path in array', () => {
         expect(grabPath(FakeApiData, "init-param.mailHost"
         )).toBe(".web-app.servlet[2].init-param.mailHost");
     });
+    
+    test('get navigate path with parent array', () => {
+        expect(grabPath(FakeApiData, "servlet.mailHost"
+        )).toBe(".web-app.servlet[2].init-param.mailHost");
+    });
 
-
+    test('get navigation path with parent array and has exist array inner object data', () => {
+        expect(grabPath(FakeApiData, "cars.speed"
+        )).toBe(".cars[1].speed");
+    });
 
     // Test modes of incorrect routes
     test('select side key (wrong test)', () => {

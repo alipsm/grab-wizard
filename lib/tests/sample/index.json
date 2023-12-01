@@ -1,57 +1,83 @@
 {
-    "web-app": {
-      "servlet": [
-        {
-          "servlet-name": "cofaxEmail",
-          "servlet-class": "org.cofax.cds.EmailServlet"
-          
-        },
-        {
-          "servlet-name": "cofaxAdmin",
-          "servlet-class": "org.cofax.cds.AdminServlet"
-        },
-        {
-          "servlet-name": "fileServlet",
-          "servlet-class": "org.cofax.cds.FileServlet",
-          "init-param": {
-            "mailHost": "mail1",
-            "mailHostOverride": "mail2"
-          }
-        },
-        {
-          "servlet-name": "cofaxTools",
-          "servlet-class": "org.cofax.cms.CofaxToolsServlet",
-          "last-array-item": {
-            "templatePath": "toolstemplates/",
-            "log": 1,
-            "logLocation": "/usr/local/tomcat/logs/CofaxTools.log",
-            "logMaxSize": "",
-            "dataLog": 1,
-            "dataLogLocation": "/usr/local/tomcat/logs/dataLog.log",
-            "dataLogMaxSize": "",
-            "removePageCache": "/content/admin/remove?cache=pages&id=",
-            "removeTemplateCache": "/content/admin/remove?cache=templates&id=",
-            "fileTransferFolder": "/usr/local/tomcat/webapps/content/fileTransferFolder",
-            "lookInContext": 1,
-            "adminGroupID": 4,
-            "betaServer": true
-          }
-        }
-      ],
-      "servlet-mapping": {
-        "cofaxCDS": "/",
-        "cofaxEmail": "/cofaxutil/aemail/*",
-        "cofaxAdmin": "/admin/*",
-        "fileServlet": "/static/*",
-        "cofaxTools": "/tools/*"
+  "web-app": {
+    "servlet": [
+      {
+        "servlet-name": "cofaxEmail",
+        "servlet-class": "org.cofax.cds.EmailServlet"
       },
-      "taglib": {
-        "taglib-uri": "cofax.tld",
-        "taglib-location": "/WEB-INF/tlds/cofax.tld",
-        "nested1":{
-          "nested2":{
-            "value":"hi"
-        }}
+      {
+        "servlet-name": "cofaxAdmin",
+        "servlet-class": "org.cofax.cds.AdminServlet"
+      },
+      {
+        "servlet-name": "fileServlet",
+        "servlet-class": "org.cofax.cds.FileServlet",
+        "init-param": {
+          "mailHost": "mail1",
+          "mailHostOverride": "mail2"
+        }
+      },
+      {
+        "servlet-name": "cofaxTools",
+        "servlet-class": "org.cofax.cms.CofaxToolsServlet",
+        "last-array-item": {
+          "templatePath": "toolstemplates/",
+          "log": 1,
+          "logLocation": "/usr/local/tomcat/logs/CofaxTools.log",
+          "logMaxSize": "",
+          "dataLog": 1,
+          "dataLogLocation": "/usr/local/tomcat/logs/dataLog.log",
+          "dataLogMaxSize": "",
+          "removePageCache": "/content/admin/remove?cache=pages&id=",
+          "removeTemplateCache": "/content/admin/remove?cache=templates&id=",
+          "fileTransferFolder": "/usr/local/tomcat/webapps/content/fileTransferFolder",
+          "lookInContext": 1,
+          "adminGroupID": 4,
+          "betaServer": true
+        }
+      }
+    ],
+    "servlet-mapping": {
+      "cofaxCDS": "/",
+      "cofaxEmail": "/cofaxutil/aemail/*",
+      "cofaxAdmin": "/admin/*",
+      "fileServlet": "/static/*",
+      "cofaxTools": "/tools/*"
+    },
+    "taglib": {
+      "taglib-uri": "cofax.tld",
+      "taglib-location": "/WEB-INF/tlds/cofax.tld",
+      "nested1": {
+        "nested2": {
+          "value": "hi"
+        }
       }
     }
-  }
+  },
+  "cars": [
+    {
+      "name": "Ford",
+      "models": [
+        "Fiesta",
+        "Focus",
+        "Mustang"
+      ]
+    },
+    {
+      "name": "BMW",
+      "models": [
+        "320",
+        "X3",
+        "X5"
+      ],
+      "speed": 180
+    },
+    {
+      "name": "Fiat",
+      "models": [
+        "500",
+        "Panda"
+      ]
+    }
+  ]
+}
