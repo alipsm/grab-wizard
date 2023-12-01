@@ -1,7 +1,7 @@
 import { NavigatorInterface } from "../../../types";
-import navigateAndRetrieveHelpers from "../helpers";
+import searchHelper from "../helpers";
 
-const { areSameKeys, isFinalItem, isLastRoutesKey, isObject } = navigateAndRetrieveHelpers;
+const { areSameKeys, isFinalItem, isLastRoutesKey, isObject } = searchHelper;
 const retrieveNavigator = (() => {
     const grabValue = (obj: object, routes: NavigatorInterface["routes"], defaultValue?: string) => {
         const result = navigateAndRetrieve({ obj, routes, defaultValue });

@@ -1,4 +1,4 @@
-import pathOperationHelpers from "../helpers"
+import pathHelper from "../helpers"
 
 const pathOperation = (() => {
     function getObjectValueWithStringPath(obj: object, path: string) {
@@ -16,7 +16,7 @@ const pathOperation = (() => {
 
 
     const setArrayOrObjectSynax = function (currentValue: string | number) {
-        if (pathOperationHelpers.isNumber.call({ currentValue })) {
+        if (pathHelper.isNumber.call({ currentValue })) {
             return `[${currentValue}]`
         }
         return `.${currentValue}`

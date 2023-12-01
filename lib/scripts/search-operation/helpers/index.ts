@@ -1,4 +1,4 @@
-const navigateAndRetrieveHelpers = (() => {
+const searchHelper = (() => {
     const isFinalItem = (obj: object, indexFound: number, key: string) => {
         return Object.keys(obj).at(-1) === key && indexFound !== 0 && typeof obj[key] !== 'object';
     };
@@ -18,4 +18,4 @@ const navigateAndRetrieveHelpers = (() => {
         areSameKeys
     };
 })();
-export default navigateAndRetrieveHelpers;
+export default searchHelper;

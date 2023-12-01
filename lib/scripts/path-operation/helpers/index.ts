@@ -1,4 +1,4 @@
-const pathOperationHelpers = (() => {
+const pathHelper = (() => {
 
     const isNumber = function() {
         return !isNaN(this.currentValue as number)
@@ -9,4 +9,4 @@ const pathOperationHelpers = (() => {
     }
 })()
 
-export default pathOperationHelpers
+export default pathHelper
