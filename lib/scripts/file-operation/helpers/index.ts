@@ -1,4 +1,6 @@
-const fileOperationHelpers = (() => {
+const fs = require('fs');
+
+const fileHelper = (() => {
     // Checking the presence of the key in the json file
     function isExistUniqueKey(jsonData: object, key: number) {
         const innerFakeFile = jsonData;
@@ -11,6 +13,10 @@ const fileOperationHelpers = (() => {
         if (typeof window === "object")
             return "browser";
         return "node";
+    }
+
+    function isExistPath(path:string):boolean {
+        return !!fs.existsSync(path)
     }
 
     // Creating a unique key using the object keys and the route received from the user
@@ -30,11 +36,20 @@ const fileOperationHelpers = (() => {
         return Math.abs(hash);
     }
 
+    function extractParentDirectory(path: string) {
+        let dir: any = path.split("/")
+        dir.pop()
+        dir = dir.join("/")
+        return dir;
+    }
+
     return {
         isExistUniqueKey,
         createUniqueKey,
+        extractParentDirectory,
         isExistWindow,
-        stringHasher
+        stringHasher,
+        isExistPath,
     };
 })();
-export default fileOperationHelpers;
+export default fileHelper;
