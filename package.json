@@ -1,6 +1,6 @@
 {
   "name": "nested-data-navigator",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
