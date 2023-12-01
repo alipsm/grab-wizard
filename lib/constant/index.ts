@@ -1,1 +1,2 @@
-export const PATHS_JSON_FILE="./lib/data/paths.json"
+const thisDir=__dirname
+export const PATHS_JSON_FILE=thisDir+"/../data/paths.json"
