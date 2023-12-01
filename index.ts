@@ -1,4 +1,4 @@
-import DiContainer from "./dist/scripts/di/container";
+import DiContainer from "./lib/scripts/di/container";
 
 const {grabPath,grabValue} = DiContainer
 
