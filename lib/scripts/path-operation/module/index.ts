@@ -3,7 +3,7 @@ import pathOperationHelpers from "../helpers"
 const pathOperation = (() => {
     function getObjectValueWithStringPath(obj: object, path: string) {
         const getArrayPath = convertPathToArray(path)
-        const data = getArrayPath.reduce((prev, current) => { return prev[current] }, obj)
+        const data = getArrayPath.reduce((prev, current) => { return prev?.[current] }, obj)
         return data
     }
 
