@@ -1,6 +1,15 @@
 {
   "name": "nested-data-navigator",
   "version": "1.2.2",
+  "keywords": [
+    "javascript",
+    "navigate",
+    "object",
+    "nested",
+    "value",
+    "grab",
+    "get"
+  ],
   "description": "",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
