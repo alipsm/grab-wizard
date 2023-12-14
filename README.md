@@ -1,18 +1,18 @@
-# nested-data-navigator [![npm](https://img.shields.io/npm/v/nested-data-navigator)](https://www.npmjs.com/package/nested-data-navigator) [![NPM Downloads](https://img.shields.io/npm/dm/nested-data-navigator)](https://npmcharts.com/compare/nested-data-navigator)
+# grab-wizard [![npm](https://img.shields.io/npm/v/grab-wizard)](https://www.npmjs.com/package/grab-wizard) [![NPM Downloads](https://img.shields.io/npm/dm/grab-wizard)](https://npmcharts.com/compare/grab-wizard)
 
-**Nested Data Navigator** is a lightweight JavaScript package for navigating and retrieving values from nested data structures.
+**Grab Wizard** is a lightweight JavaScript package for navigating and retrieving values from nested data structures.
 <br/>
 ## Install
 You can install the package using npm:
 
 ```bash
-npm install nested-data-navigator
+npm install grab-wizard
 ```
 <br/>
 
 ## Usage
 ```js
-const { grabValue, grabPath } = require("nested-data-navigator");
+const { grabValue, grabPath } = require("grab-wizard");
 
 var person = {
   firstName: "Ali",
@@ -36,7 +36,7 @@ console.log(grabPath(person, "info.city", "default value")) //=> '.info.address.
 You can grab value or path without select parents:
 
 ```js
-const { grabValue, grabPath } = require("nested-data-navigator");
+const { grabValue, grabPath } = require("grab-wizard");
 
 var sample_1 = {
   firstName: "Ali",
