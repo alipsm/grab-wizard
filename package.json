@@ -1,5 +1,5 @@
 {
-  "name": "nested-data-navigator",
+  "name": "grab-wizard",
   "version": "1.2.4",
   "keywords": [
     "javascript",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alipsm/nested-data-navigator.git"
+    "url": "git+https://github.com/alipsm/grab-wizard.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alipsm/nested-data-navigator/issues"
+    "url": "https://github.com/alipsm/grab-wizard/issues"
   },
-  "homepage": "https://github.com/alipsm/nested-data-navigator#readme",
+  "homepage": "https://github.com/alipsm/grab-wizard#readme",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
