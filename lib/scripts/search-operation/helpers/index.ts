@@ -11,11 +11,16 @@ const searchHelper = (() => {
     const areSameKeys = (routes: (string | number)[], indexFound: number, key: string) => {
         return key === routes[indexFound];
     };
+
+    const isExistKeyInCurrentObjectKeys = (obj:object, key: string|number) => {        
+        return !!obj?.hasOwnProperty(key);
+    };
     return {
-        isFinalItem,
-        isObject,
+        isExistKeyInCurrentObjectKeys,
         isLastRoutesKey,
-        areSameKeys
+        isFinalItem,
+        areSameKeys,
+        isObject,
     };
 })();
 export default searchHelper;
