@@ -1,13 +1,13 @@
 import { NavigatorInterface } from "../../../types";
 import searchHelper from "../helpers";
 
-const { areSameKeys, isFinalItem, isLastRoutesKey, isObject } = searchHelper;
+const { areSameKeys, isFinalItem, isLastRoutesKey, isObject, isExistKeyInCurrentObjectKeys } = searchHelper;
 const retrieveNavigator = (() => {
     const grabValue = (obj: object, routes: NavigatorInterface["routes"], defaultValue?: string) => {
         const result = navigateAndRetrieve({ obj, routes, defaultValue });
         return result;
     };
-    const grabPath = (obj: object, routes: NavigatorInterface["routes"], defaultValue?: string):NavigatorInterface["routes"] => {
+    const grabPath = (obj: object, routes: NavigatorInterface["routes"], defaultValue?: string): NavigatorInterface["routes"] => {
         const { grabPath } = navigateAndRetrieve({ obj, routes, defaultValue });
         return grabPath;
     };
@@ -16,38 +16,58 @@ const retrieveNavigator = (() => {
     };
 })();
 export default retrieveNavigator;
+
 // Callback function for find nested value
-function navigateAndRetrieve(navData: NavigatorInterface):{grabPath:NavigatorInterface["routes"],grabValue:any} {
+function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: NavigatorInterface["routes"], grabValue: any } {
     const { obj, routes } = navData;
-    var indexFound = 0; // => Controls the index number of found routes
-    var routesMonitoring = []; // => Monitores object routes 
-    // handle callback search function (find nested value & path)
+
+    const searchData = {
+        indexFound: 0,
+        routesMonitoring: []
+    }
+    Object.seal(searchData);
+
     function search(obj: object, routes: NavigatorInterface["routes"]) {
+
+        // If the key was in the list of current keys, it will be selected
+        {
+            let getObjKey = routes[searchData.indexFound]
+            if (isExistKeyInCurrentObjectKeys(obj, getObjKey)) {
+                obj[getObjKey]
+            }
+        }
+
+        
         for (const key in obj) {
             const nextObj = obj[key];
-            if (areSameKeys(routes, indexFound, key)) {
-                routesMonitoring.push(key);
-                indexFound++;
-                if (isLastRoutesKey(routes, indexFound)) {
-                    return { path: routesMonitoring, value: nextObj };
+            if (areSameKeys(routes, searchData.indexFound, key)) {
+                handleFindKey.call(searchData, key)
+                if (isLastRoutesKey(routes, searchData.indexFound)) {
+                    return { path: searchData.routesMonitoring, value: nextObj };
                 }
                 const result = search(nextObj, routes);
                 return result;
             }
             else if (isObject(obj, key)) {
-                routesMonitoring.push(key);
+                searchData.routesMonitoring.push(key);
                 const result = search(nextObj, routes);
                 if (result)
                     return result;
             }
-            else if (isFinalItem(obj, indexFound, key)) {
-                routesMonitoring.pop();
+            else if (isFinalItem(obj, searchData.indexFound, key)) {
+                searchData.routesMonitoring.pop();
                 return undefined;
             }
         }
-        routesMonitoring.pop();
+        searchData.routesMonitoring.pop();
         return undefined;
     }
+
+    function handleFindKey(key: string) {
+        this.routesMonitoring.push(key);
+        this.indexFound++;
+    }
+
     const result = search(obj, routes);
     return {
         grabValue: result?.value ?? navData.defaultValue,
