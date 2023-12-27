@@ -28,16 +28,22 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
     Object.seal(searchData);
 
     function search(obj: object, routes: NavigatorInterface["routes"]) {
+        Object.freeze(obj)
 
         // If the key was in the list of current keys, it will be selected
         {
             let getObjKey = routes[searchData.indexFound]
             if (isExistKeyInCurrentObjectKeys(obj, getObjKey)) {
-                obj[getObjKey]
+                handleFindKey.call(searchData, getObjKey)
+                if (isLastRoutesKey(routes, searchData.indexFound)) {
+                    return { path: searchData.routesMonitoring, value: obj[getObjKey] };
+                }
+                const result = search(obj[getObjKey], routes);
+                return result;
             }
         }
-
         
+
         for (const key in obj) {
             const nextObj = obj[key];
             if (areSameKeys(routes, searchData.indexFound, key)) {
