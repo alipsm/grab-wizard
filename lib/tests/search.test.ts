@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeAll } from "@jest/globals";
 import FakeApiData from "./sample/index.json"
-import DiContainer from "../scripts/di/module/container";
+import DiContainer from "../scripts/di/module";
 const { grabPath, grabValue } = DiContainer
 
 

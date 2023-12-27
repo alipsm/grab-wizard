@@ -1,6 +1,10 @@
-import fileOperations from "../file-operation/module";
-import pathOperation from "../path-operation/module";
-import retrieveNavigator from "../search-operation/module";
+import fileOperations from "../../file-operation/module";
+import pathOperation from "../../path-operation/module";
+import retrieveNavigator from "../../search-operation/module";
+import diHelper from "../helpers";
+
+const {isEmpityData} = diHelper;
+
 
 const DiContainer = (() => {
     const handleGrabValue = (obj: object, path: string, defaultValue?: string): any | undefined => {
@@ -12,7 +16,7 @@ const DiContainer = (() => {
         const getArrayPath = pathOperation.convertPathToArray(path)
         const { grabPath, grabValue } = retrieveNavigator.grabValue(obj, getArrayPath)
 
-        if (!!!grabValue)
+        if ( isEmpityData(grabValue) )
             return defaultValue
 
         const convertGrabPathToString = pathOperation.mapRoutesToStringPath(grabPath)
