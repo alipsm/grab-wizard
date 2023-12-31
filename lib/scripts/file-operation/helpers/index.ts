@@ -3,11 +3,9 @@ const fs = require('fs');
 const fileHelper = (() => {
     // Checking the presence of the key in the json file
     function isExistUniqueKey(jsonData: object, key: number) {
-        const innerFakeFile = jsonData;
-        if (key in innerFakeFile)
-            return true;
-        return false;
+        return (key in jsonData ? true : false)
     }
+
     // Checking the presence of the key in the json file
     function isExistWindow(): "browser" | "node" {
         if (typeof window === "object")
@@ -46,12 +44,19 @@ const fileHelper = (() => {
         return dir;
     }
 
+    function getHashData(obj: object, path: string) {
+        const getUniqueKey = createUniqueKey(obj, path)
+        const getHash = stringHasher(getUniqueKey)
+        return getHash
+    }
+
     return {
         isExistUniqueKey,
         createUniqueKey,
         extractParentDirectory,
         isExistWindow,
         stringHasher,
+        getHashData,
         isExistPath,
     };
 })();
