@@ -29,11 +29,9 @@ const fileOperations = (() => {
 
     // Updates JSON file to store key-value for paths
     function updatePathsJsonFile(key: number, path: string) {
-        const fileContent = fs.readFileSync(PATHS_JSON_FILE, 'utf8');
-        const data = JSON.parse(fileContent);
-        data[key] = path;
-        const updatedData = JSON.stringify(data, null, 2);
-        fs.writeFileSync(PATHS_JSON_FILE, updatedData, 'utf8');
+        const fileContent = _readFile()
+        fileContent[key] = path;
+        _writeFile(fileContent)
     }
 
 
@@ -43,8 +41,8 @@ const fileOperations = (() => {
                 createPathsJsonFile()
                 return {}
             }
-            const fileContent = fs.readFileSync(PATHS_JSON_FILE, 'utf8');
-            return JSON.parse(fileContent) || {}
+            const fileContent = _readFile();
+            return fileContent || {}
         } else {
 
         }
@@ -53,8 +51,8 @@ const fileOperations = (() => {
 
     // Updates JSON file to store key-value for paths
     function getPathOnTheFile(obj: object, path: string): string | undefined {
-        const getUniqueKey = fileHelper.createUniqueKey(obj, path)
-        const getHash = fileHelper.stringHasher(getUniqueKey)
+        const getHash = fileHelper.getHashData(obj,path)
+
         let data: object = getLocalEnvironmentData()
         if (!!data && typeof data === "object")
             return data[getHash];
@@ -62,8 +60,34 @@ const fileOperations = (() => {
     }
 
 
+    function removePathItem(obj: object, path: string) {
+        const getHash = fileHelper.getHashData(obj,path)
+        _removeFileItems(getHash)
+    }
+
+    const _readFile=()=>{
+        const fileContent = fs.readFileSync(PATHS_JSON_FILE, 'utf8');
+        const data = JSON.parse(fileContent);
+        return data
+    }
+
+    const _writeFile=(data:object)=>{
+        const updatedData = JSON.stringify(data, null, 2);
+        fs.writeFileSync(PATHS_JSON_FILE, updatedData, 'utf8');
+    }
+
+    const _removeFileItems=(hashId:string|number)=>{
+        const fileContent = _readFile()
+        delete fileContent[hashId]
+        _writeFile(fileContent)
+    }
+
+
+
+
     return {
         getPathOnTheFile,
+        removePathItem,
         setUniqueKey,
     };
 })();

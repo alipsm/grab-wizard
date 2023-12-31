@@ -16,6 +16,10 @@ describe('search module', () => {
         expect(grabValue(fakeData, "taglib.nested2")).toMatchObject({ value: 'hi' });
     });
 
+    test('same path', () => {
+        expect(grabValue(fakeData, "taglib.nested2")).toMatchObject({ value: 'hi' });
+    });
+
     test('find one before the last item value in array', () => {
         expect(grabValue(fakeData, "last-array-item.adminGroupID")).toBe(4);
     });
