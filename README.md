@@ -63,10 +63,10 @@ var sample_2 = {
 };
 
 console.log(grabValue(sample_1, "info.city")) //=> 'New York'
-console.log(grabPath(person, "info.city")) //=> '.info.address.city'
+console.log(grabPath(sample_2, "info.city")) //=> '.info.address.city'
 
-console.log(grabValue(sample_2, "city")) //=> 'Canada'
-console.log(grabPath(person, "city")) //=> '.info.location.city'
+console.log(grabValue(sample_2, "info.city")) //=> 'Canada'
+console.log(grabPath(sample_2, "info.city")) //=> '.info.location.city'
 
 console.log(grabValue(sample_2, "info.wrong","not found!")) //=> 'not found!'
 
