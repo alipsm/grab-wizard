@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/grab-wizard/static/css/main.ae6d3805.css",
+    "main.js": "/grab-wizard/static/js/main.fd5c1cdb.js",
+    "index.html": "/grab-wizard/index.html",
+    "main.ae6d3805.css.map": "/grab-wizard/static/css/main.ae6d3805.css.map",
+    "main.fd5c1cdb.js.map": "/grab-wizard/static/js/main.fd5c1cdb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae6d3805.css",
+    "static/js/main.fd5c1cdb.js"
+  ]
+}
