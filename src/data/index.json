@@ -1,0 +1,12 @@
+[
+    {
+        "title":"Confidently release the paths",
+        "body":[
+            "Sometimes, there arises the need to edit the paths of objects in the code due to various reasons.This occurs when the values we were seeking are no longer accessible through the previous path and have moved to new or different paths.",
+            "Imagine that, for certain decisions, it has been determined that henceforth, the user's profile picture displayed will be accessible through the 'user.info.img' path instead of the 'user.img' path.",
+            " It is evident that you must modify all the paths associated with 'user.img' to 'user.info.img' so that you can retrieve and display the user's picture again.",
+            " This may potentially slow down the development process, both in the backend and frontend, as every change involves communication and a time investment."
+        ],
+        "footer":"However, with the use of grab-wizard, everything is automated"
+    }
+]
