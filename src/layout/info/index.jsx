@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { motion } from "framer-motion"
 
 import InfoData from '../../data/index.json'
@@ -8,9 +8,10 @@ import ViewPort from '../../components/utils/ViewPort'
 export default function Info() {
   const [inView, setInView] = useState(false)
 
+  const memoizedTextCard=useMemo(()=><TextCard data={InfoData[0]} />,[])
   return (
     <div className='flex flex-col justify-around w-full h-full box-border md:flex-row-reverse md:items-center'>
-      <ViewPort getViewStatus={setInView} delay={600}>
+      <ViewPort getViewStatus={setInView} delay={300}>
         <motion.div
           key={inView}
           initial={{ y: 30, opacity: 0 }}
@@ -22,15 +23,15 @@ export default function Info() {
       </ViewPort>
 
 
-      <ViewPort getViewStatus={setInView} delay={300}>
-        <motion.div
+      {/* <ViewPort getViewStatus={setInView} delay={300} triggerOnce> */}
+        {/* <motion.div
           initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: inView ? 1 : 0, }}
+          animate={{ y: 0, opacity: inView ? 1 : .5 }}
           transition={{ duration: 1, delay: .5 }}
-        >
-          <TextCard data={InfoData[0]} />
-        </motion.div>
-      </ViewPort>
+        > */}
+          {memoizedTextCard}
+        {/* </motion.div> */}
+      {/* </ViewPort> */}
     </div>
   )
 }
