@@ -8,5 +8,16 @@
             " This may potentially slow down the development process, both in the backend and frontend, as every change involves communication and a time investment."
         ],
         "footer":"However, with the use of grab-wizard, everything is automated"
+    },
+    {
+        "title":"Hashing and Catching",
+        "body":[
+            "To enhance the ease and speed of value retrieval through enchanting pathing, the primary path of hashed values is employed.",
+            " Upon invoking this path again, the hashed values are promptly displayed for efficiency.",
+            " Now, consider a scenario where the previously hashed path has undergone a change.",
+            " I make an effort to search again, and if successful in identifying the new path, I seamlessly substitute it for the former hashed path.",
+            "This ensures the smooth retrieval of updated values."
+        ],
+        "footer":"So grab the values faster"
     }
 ]
