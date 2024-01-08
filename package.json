@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/alipsm/grab-wizard/issues"
   },
-  "homepage": "https://github.com/alipsm/grab-wizard#readme",
+  "homepage": "https://alipsm.github.io/grab-wizard",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",

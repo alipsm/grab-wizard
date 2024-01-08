@@ -19,6 +19,26 @@ export default retrieveNavigator;
 
 // Callback function for find nested value
 function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: NavigatorInterface["routes"], grabValue: any } {
+
+    // remove all circular references in the object value with IIFE
+    ((data) => {
+        const seen = new WeakSet();
+        const stringified = JSON.stringify(data, _remove());
+        function _remove() {
+            return (key, value: any) => {
+                if (isObject(value)) {
+                    if (seen.has(value)) {
+                        return;
+                    }
+                    seen.add(value);
+                }
+                return value;
+            }
+        }
+        navData.obj = JSON.parse(stringified);
+    })(navData.obj);
+
+
     const { obj, routes } = navData;
 
     const searchData = {
@@ -42,7 +62,7 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
                 return result;
             }
         }
-        
+
 
         for (const key in obj) {
             const nextObj = obj[key];
@@ -54,7 +74,7 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
                 const result = search(nextObj, routes);
                 return result;
             }
-            else if (isObject(obj, key)) {
+            else if (isObject(nextObj)) {
                 searchData.routesMonitoring.push(key);
                 const result = search(nextObj, routes);
                 if (result)
