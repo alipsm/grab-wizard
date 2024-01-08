@@ -3,7 +3,7 @@ const searchHelper = (() => {
         return Object.keys(obj).at(-1) === key && indexFound !== 0 && typeof obj[key] !== 'object';
     };
 
-    const isObject = (obj: object, key: string) => ((typeof obj[key] === 'object' && !Object.is(obj, null)))
+    const isObject = (obj: object) => ((typeof obj === 'object' && !Object.is(obj, null)))
 
     const isLastRoutesKey = (routes: (string | number)[], indexFound: number) => (indexFound === routes.length)
 
