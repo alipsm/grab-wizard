@@ -10,7 +10,7 @@
         "footer":"However, with the use of grab-wizard, everything is automated"
     },
     {
-        "title":"Hashing and Catching",
+        "title":"Hashing and Caching",
         "body":[
             "To enhance the ease and speed of value retrieval through enchanting pathing, the primary path of hashed values is employed.",
             " Upon invoking this path again, the hashed values are promptly displayed for efficiency.",

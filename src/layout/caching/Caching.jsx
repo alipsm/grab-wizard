@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-import CatchingData from '../../data/index.json'
+import CachingData from '../../data/index.json'
 import TextCard from '../../components/text_card'
 import Hash from '../../animations/Hash'
 import ViewPort from '../../components/utils/ViewPort'
 
-export default function Catching() {
+export default function Caching() {
     const [inView, setInView] = useState(false)
     return (
         <div className='flex flex-col justify-evenly w-full h-full box-border md:flex-row-reverse items-center md:justify-around'>
@@ -20,7 +20,7 @@ export default function Catching() {
                     <Hash classes='flex-groxw' />
                 </motion.div>
             </ViewPort>
-            <TextCard data={CatchingData[1]} />
+            <TextCard data={CachingData[1]} />
         </div>
     )
 }
