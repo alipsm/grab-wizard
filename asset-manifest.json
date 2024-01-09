@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/grab-wizard/static/css/main.236eb3fb.css",
-    "main.js": "/grab-wizard/static/js/main.624bd843.js",
+    "main.js": "/grab-wizard/static/js/main.b657410d.js",
     "static/media/grab-wizard-logo.png": "/grab-wizard/static/media/grab-wizard-logo.af24a49a2fe0ba87c75e.png",
     "index.html": "/grab-wizard/index.html",
     "main.236eb3fb.css.map": "/grab-wizard/static/css/main.236eb3fb.css.map",
-    "main.624bd843.js.map": "/grab-wizard/static/js/main.624bd843.js.map"
+    "main.b657410d.js.map": "/grab-wizard/static/js/main.b657410d.js.map"
   },
   "entrypoints": [
     "static/css/main.236eb3fb.css",
-    "static/js/main.624bd843.js"
+    "static/js/main.b657410d.js"
   ]
 }
