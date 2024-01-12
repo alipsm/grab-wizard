@@ -1,6 +1,5 @@
 import DiContainer from "./lib/scripts/di/module";
 const axios = require('axios');
-const {string} = require("flatted")
 const util = require('util');
 const {grabPath,grabValue} = DiContainer
 
@@ -15,8 +14,6 @@ async function getData() {
     console.time("start")
     // console.log('data', data)
     
-    // استفاده از flatted.parse برای حذف Circular references
-    // const removeCircule = flatted.string(data, { circularAsUndefined: true });
     
     // const removeCircule = removeCircularReferences(data)s
     
