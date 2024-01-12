@@ -1,7 +1,7 @@
 import { NavigatorInterface } from "../../../types";
 import searchHelper from "../helpers";
 
-const { areSameKeys, isFinalItem, isLastRoutesKey, isObject, isExistKeyInCurrentObjectKeys } = searchHelper;
+const { areSameKeys, isFinalItem, isLastRoutesKey, isObject, isExistKeyInCurrentObjectKeys, isBuffer } = searchHelper;
 const retrieveNavigator = (() => {
     const grabValue = (obj: object, routes: NavigatorInterface["routes"], defaultValue?: string) => {
         const result = navigateAndRetrieve({ obj, routes, defaultValue });
@@ -39,7 +39,6 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
     })(navData.obj);
 
 
-    const { obj, routes } = navData;
 
     const searchData = {
         indexFound: 0,
@@ -94,6 +93,7 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
         this.indexFound++;
     }
 
+    const { obj, routes } = navData;
     const result = search(obj, routes);
     return {
         grabValue: result?.value ?? navData.defaultValue,
