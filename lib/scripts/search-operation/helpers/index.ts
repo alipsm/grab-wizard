@@ -11,6 +11,7 @@ const searchHelper = (() => {
 
     const isExistKeyInCurrentObjectKeys = (obj: object, key: string | number) => (!Object.is(obj, null) ? Object.hasOwnProperty.bind(obj)(key) : false)
 
+    const isBuffer = (obj: object) => (Buffer.isBuffer(obj) || obj?.['type'] === "Buffer")
 
     return {
         isExistKeyInCurrentObjectKeys,
@@ -18,6 +19,7 @@ const searchHelper = (() => {
         isFinalItem,
         areSameKeys,
         isObject,
+        isBuffer, 
     };
 })();
 export default searchHelper;
