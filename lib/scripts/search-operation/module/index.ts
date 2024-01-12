@@ -27,7 +27,7 @@ function navigateAndRetrieve(navData: NavigatorInterface): { grabPath: Navigator
         function _remove() {
             return (key, value: any) => {
                 if (isObject(value)) {
-                    if (seen.has(value)) {
+                    if (seen.has(value) || isBuffer(value)) {
                         return;
                     }
                     seen.add(value);
