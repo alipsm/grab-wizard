@@ -4,7 +4,6 @@ import ViewPort from '../../components/utils/ViewPort'
 
 export default function TryIt() {
     const [inView, setInView] = useState(false)
-    console.log('inView', inView)
     return (
         <div className='flex flex-col justify-center items-center h-full w-full space-y-6'>
             <h1 className=' text-xl text-burntSienna sm:text-4xl'>
