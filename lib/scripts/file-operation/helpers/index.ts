@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const fileHelper = (() => {
     // Checking the presence of the key in the json file
     function isExistUniqueKey(jsonData: object, key: number) {
@@ -7,15 +5,29 @@ const fileHelper = (() => {
     }
 
     // Checking the presence of the key in the json file
-    function isExistWindow(): "browser" | "node" {
-        if (typeof window === "object")
-            return "browser";
-        return "node";
-    }
+    const isExistWindow = ((): boolean => (typeof window === "object"))()
 
     function isExistPath(path: string): boolean {
-        return !!fs.existsSync(path)
+        try {
+            const fs = require('fs');
+            return !!fs.existsSync(path)
+        } catch (error) {
+        }
+        return false
     }
+
+    const isExistLocalStorageKey = (): boolean => (!!localStorage.getItem("gw"))
+
+    const jsonParse = (data: string): object => {
+        let jsonParsed = {};
+        try {
+            jsonParsed = JSON.parse(data)
+        } finally {
+            return jsonParsed
+        }
+    }
+
+    const jsonStringify = (data: object) => JSON.stringify(data, null, 2)
 
     const _removeSymbolKeys = (objKeys: any[]) => (objKeys.filter((objKey: any) => (typeof objKey !== "symbol")))
 
@@ -44,20 +56,18 @@ const fileHelper = (() => {
         return dir;
     }
 
-    function getHashData(obj: object, path: string) {
-        const getUniqueKey = createUniqueKey(obj, path)
-        const getHash = stringHasher(getUniqueKey)
-        return getHash
-    }
+
 
     return {
+        isExistLocalStorageKey,
+        extractParentDirectory,
         isExistUniqueKey,
         createUniqueKey,
-        extractParentDirectory,
+        jsonStringify,
         isExistWindow,
         stringHasher,
-        getHashData,
         isExistPath,
+        jsonParse,
     };
 })();
 export default fileHelper;
