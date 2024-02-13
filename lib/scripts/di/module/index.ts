@@ -1,4 +1,4 @@
-import fileOperations from "../../file-operation/module";
+import fileOperations from "../../file-operation/modules";
 import pathOperation from "../../path-operation/module";
 import retrieveNavigator from "../../search-operation/module";
 import diHelper from "../helpers";
@@ -8,9 +8,9 @@ const {isEmpityData} = diHelper;
 
 const DiContainer = (() => {
     const handleGrabValue = (obj: object, path: string, defaultValue?: string): any | undefined => {
-        const getPathValue = fileOperations.getPathOnTheFile(obj, path)
-        if (!!getPathValue) {
-            const getObjValue = pathOperation.getObjectValueWithStringPath(obj, getPathValue)
+        const pathValue = fileOperations.getPathValue(obj, path)
+        if (!!pathValue) {
+            const getObjValue = pathOperation.getObjectValueWithStringPath(obj, pathValue)
             return getObjValue
         }
         const getArrayPath = pathOperation.convertPathToArray(path)
@@ -20,21 +20,21 @@ const DiContainer = (() => {
             return defaultValue
 
         const convertGrabPathToString = pathOperation.mapRoutesToStringPath(grabPath)
-        fileOperations.setUniqueKey(obj, path, convertGrabPathToString)
+        fileOperations.setKey(obj, path, convertGrabPathToString)
         return grabValue
     };
 
     const handleGrabPath = (obj: object, path: string, defaultValue?: string): any | undefined => {
-        const getPathValue = fileOperations.getPathOnTheFile(obj, path)
-        if (!!getPathValue)
-            return getPathValue
+        const pathValue = fileOperations.getPathValue(obj, path)
+        if (!!pathValue)
+            return pathValue
 
         const getArrayPath = pathOperation.convertPathToArray(path)
         const grabPath = retrieveNavigator.grabPath(obj, getArrayPath)
         if (!!!grabPath.length)
             return defaultValue
         const convertGrabPathToString = pathOperation.mapRoutesToStringPath(grabPath)
-        fileOperations.setUniqueKey(obj, path, convertGrabPathToString)
+        fileOperations.setKey(obj, path, convertGrabPathToString)
         return convertGrabPathToString
     };
 

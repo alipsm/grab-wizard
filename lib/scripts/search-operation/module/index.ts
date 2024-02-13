@@ -1,4 +1,4 @@
-import { NavigatorInterface } from "../../../types";
+import { NavigatorInterface } from "../interface";
 import searchHelper from "../helpers";
 
 const { areSameKeys, isFinalItem, isLastRoutesKey, isObject, isExistKeyInCurrentObjectKeys, isBuffer } = searchHelper;
