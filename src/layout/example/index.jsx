@@ -75,42 +75,15 @@ export default function Example() {
     const getUniqueKey = () => inView + Math.random() * 1000
 
     return (
-        <ViewPort getViewStatus={setInView} delay={300} className={"flex scroll-w flex-col justify-between items-center relative gap-1 w-full h-full box-border overflow-y-auto md:justify-end md:flex-row-reverse indent-0 "}>
-            <motion.div
-                key={getUniqueKey()}
-                initial={{ right: -30, opacity: 0 }}
-                animate={{ right: 0, opacity: inView ? 1 : 0 }}
-                transition={{ duration: .7, delay: .3 }}
-                className="md:absolute bottom-2 right-0 z-10 w-full"
-            >
-                <CodeMirror
-                    key={"grabWizardMirror"}
-                    value={grabWizardSample.join("\n")}
-                    theme={githubDark}
-                    readOnly
-                    className="text-xs sm:text-sm drop-shadow-xl shadow-md shadow-burntSienna w-full md:w-max rounded-lg md:text-base "
-                    extensions={[javascript({ jsx: true })]}
-                />
-            </motion.div>
+        <ViewPort getViewStatus={setInView} delay={300} className={"flex scroll-w flex-col justify-between items-center relative gap-1 w-full h-full overflow-hidden box-border overf low-y-auto md:justify-end md:flex-row-reverse indent-0 "}>
+           
+           
+           
+           
+            
 
 
-            <motion.div
-                key={getUniqueKey()}
-                initial={{ right: -30, opacity: 0 }}
-                animate={{ right: 0, opacity: inView ? 1 : 0 }}
-                transition={{ duration: .7, delay: .3 }}
-                className="md:absolute top-2 right-0 z-10 w-full"
-            >
-                <CodeMirror
-                    key={"originGrabMirror"}
-                    value={originGrab.join("\n")}
-                    theme={githubDark}
-                    readOnly
-                    lineWrapping={true}
-                    className="text-xs sm:text-sm   drop-shadow-xl shadow-md shadow-burntSienna w-full md:w-max rounded-lg md:text-base"
-                    extensions={[javascript({ jsx: true })]}
-                />
-            </motion.div>
+
 
             <motion.div
                 key={getUniqueKey()}
@@ -131,6 +104,42 @@ export default function Example() {
             />
             </motion.div>
 
+
+            <motion.div
+                key={getUniqueKey()}
+                initial={{ right: -30, opacity: 0 }}
+                animate={{ right: 0, opacity: inView ? 1 : 0 }}
+                transition={{ duration: .7, delay: .3 }}
+                className="md:absolute top-2 right-0 z-10 w-full md:w-max"
+            >
+                <CodeMirror
+                    key={"originGrabMirror"}
+                    value={originGrab.join("\n")}
+                    theme={githubDark}
+                    readOnly
+                    lineWrapping={true}
+                    className="text-xs sm:text-sm   drop-shadow-xl shadow-md shadow-burntSienna w-full md:w-max  rounded-lg md:text-base"
+                    extensions={[javascript({ jsx: true })]}
+                />
+            </motion.div>
+
+
+<motion.div
+                key={getUniqueKey()}
+                initial={{ right: -30, opacity: 0 }}
+                animate={{ right: 0, opacity: inView ? 1 : 0 }}
+                transition={{ duration: .7, delay: .3 }}
+                className="md:absolute bottom-2 right-0 z-10 w-full md:w-max"
+            >
+                <CodeMirror
+                    key={"grabWizardMirror"}
+                    value={grabWizardSample.join("\n")}
+                    theme={githubDark}
+                    readOnly
+                    className="text-xs sm:text-sm drop-shadow-xl shadow-md shadow-burntSienna w-full md:w-max rounded-lg md:text-base "
+                    extensions={[javascript({ jsx: true })]}
+                />
+            </motion.div>
         </ViewPort>
     );
 }
