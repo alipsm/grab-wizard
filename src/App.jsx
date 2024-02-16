@@ -5,6 +5,7 @@ import TryIt from './layout/tryIt'
 import Creator from './layout/creator'
 import Caching from './layout/caching/Caching'
 import Example from './layout/example'
+import Lru from './layout/lru'
 
 export default function App() {
   const sections = [
@@ -12,6 +13,7 @@ export default function App() {
     <Info />,
     <Example/>,
     <Caching />,
+    <Lru/>,
     <TryIt />,
   ]
 
