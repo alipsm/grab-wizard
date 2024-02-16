@@ -11,6 +11,7 @@ export default function Banner() {
         "Fast",
         "Magical",
         "Smart",
+        "Optimal"
     ]
 
     function handleShowAbility() {
